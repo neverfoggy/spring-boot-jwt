@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>secure</title>
+</head>
+<body>
+<form action = "#" th:action="@{/add}" method = "post">
+    <h1>Заявка</h1>
+    <label for="departments"><b>Отдел</b></label>
+    <br>
+    <select th:field = "*{depts}" id="departments">
+        <option th:each="i: ${depts}" th:value="${i.getName()}" th:text="${i.getName()}">
+        </option>
+    </select>
+    <br>
+    <label for="elements"><b>Выберете нужные элементы</b></label>
+    <br>
+    <select th:field = "*{elems}" multiple id="elements">
+        <optgroup th:each="elements: ${elems}" th:label="${elements.getName()}">
+        </optgroup>
+    </select>
+</form>
+<a th:href="@{/logout}">Logout</a>
+</body>
+</html>
